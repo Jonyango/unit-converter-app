@@ -1,4 +1,4 @@
-# udacitycourse
+# unit converter app
 
 A new Flutter project.
 
