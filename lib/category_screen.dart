@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:udacitycourse/unit.dart';
 import 'category.dart';
 
 /// Category Screen
@@ -32,6 +33,17 @@ class CategoryScreen extends StatelessWidget {
     Colors.red,
   ];
 
+  List<Unit> _retrieveUnitList(String categoryName) {
+    return List.generate(10, (int i) {
+      i += 1;
+      return Unit(
+        name: '$categoryName Unit $i',
+        conversion: i.toDouble(),
+      );
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     //TODO rewrite the category widget using a for loop. For better readibility of the code.
@@ -43,36 +55,62 @@ class CategoryScreen extends StatelessWidget {
             Category(
             categoryName: _categoryNames[0], 
             categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[0]),
+            categoryColor: _baseColors[0],
+            units: _retrieveUnitList(_categoryNames[0]),
+            ),
 
             Category(
             categoryName: _categoryNames[1], 
             categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[1]),
+            categoryColor: _baseColors[1],
+            units: _retrieveUnitList(_categoryNames[1]),
+
+            ),
+            
             Category(
             categoryName: _categoryNames[2], 
             categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[2]),
+            categoryColor: _baseColors[2],
+            units: _retrieveUnitList(_categoryNames[2]),
+
+            ),
             Category(
             categoryName: _categoryNames[3], 
             categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[3]),
+            categoryColor: _baseColors[3],
+            units: _retrieveUnitList(_categoryNames[3]),
+
+            ),
             Category(
             categoryName: _categoryNames[4], 
             categoryIcon:Icons.cake, 
-            categoryColor: _baseColors[4]),
+            categoryColor: _baseColors[4],
+            units: _retrieveUnitList(_categoryNames[4]),
+
+            ),
             Category(
             categoryName: _categoryNames[5], 
             categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[5]),
+            categoryColor: _baseColors[5],
+            units: _retrieveUnitList(_categoryNames[5]),
+
+            ),
             Category(
             categoryName: _categoryNames[6], 
             categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[6]),
+            categoryColor: _baseColors[6],
+            units: _retrieveUnitList(_categoryNames[6]),
+
+            ),
             Category(
             categoryName: _categoryNames[7], 
             categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[7])
+            categoryColor: _baseColors[7],
+            units: _retrieveUnitList(_categoryNames[7]),
+
+            )
+
+           
 
         ]
       )
@@ -87,13 +125,17 @@ class CategoryScreen extends StatelessWidget {
         ),
       ),
       centerTitle: true,
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.teal[200],
     );
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.teal[200],
       appBar: appBar,
       body:listview,
       
     );
   }
+
+  //TODO Read more on list and how to work with them to modify the code for better readibility. 
+
+  
 }
