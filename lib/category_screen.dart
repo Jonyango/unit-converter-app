@@ -8,7 +8,7 @@ import 'category.dart';
 
 class CategoryScreen extends StatelessWidget {
 
-  const CategoryScreen();
+   CategoryScreen();
 
   static const _categoryNames = <String>[
     'Length',
@@ -42,78 +42,46 @@ class CategoryScreen extends StatelessWidget {
       );
     });
   }
+ 
+// creating the widget that will display my list of categories.
+
+Widget _buildCategoryWidget(List<Widget>categories){
+  return ListView.builder(
+    itemBuilder: (BuildContext context, int index) => categories[index],
+    itemCount: categories.length,
+    );
+}
 
 
   @override
   Widget build(BuildContext context) {
-    //TODO rewrite the category widget using a for loop. For better readibility of the code.
-    final listview = Container(
+// create a data structure to hold the objects from the Category class.
+// I will use List as the data structure.
+
+
+// I am creating an empty list of type category.
+ final categories = <Category>[];
+
+
+ // Add the objects of the category class inside the list.
+ // I  am going to achieve this through writing a for loop.
+
+ for(int i=0; i< 8;i++ ){
+   categories.add(
+     Category(
+       categoryName: _categoryNames[i],
+       categoryColor: _baseColors[i],
+       categoryIcon: Icons.cake ,
+       units: _retrieveUnitList(_categoryNames[i]),
+     ));
+ }    
+ 
+ 
+ 
+ 
+ final listview = Container(
       padding: EdgeInsets.symmetric(horizontal:8.0),
-      child: ListView(
-        shrinkWrap: true,
-        children:<Widget> [
-            Category(
-            categoryName: _categoryNames[0], 
-            categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[0],
-            units: _retrieveUnitList(_categoryNames[0]),
-            ),
-
-            Category(
-            categoryName: _categoryNames[1], 
-            categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[1],
-            units: _retrieveUnitList(_categoryNames[1]),
-
-            ),
-            
-            Category(
-            categoryName: _categoryNames[2], 
-            categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[2],
-            units: _retrieveUnitList(_categoryNames[2]),
-
-            ),
-            Category(
-            categoryName: _categoryNames[3], 
-            categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[3],
-            units: _retrieveUnitList(_categoryNames[3]),
-
-            ),
-            Category(
-            categoryName: _categoryNames[4], 
-            categoryIcon:Icons.cake, 
-            categoryColor: _baseColors[4],
-            units: _retrieveUnitList(_categoryNames[4]),
-
-            ),
-            Category(
-            categoryName: _categoryNames[5], 
-            categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[5],
-            units: _retrieveUnitList(_categoryNames[5]),
-
-            ),
-            Category(
-            categoryName: _categoryNames[6], 
-            categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[6],
-            units: _retrieveUnitList(_categoryNames[6]),
-
-            ),
-            Category(
-            categoryName: _categoryNames[7], 
-            categoryIcon: Icons.cake, 
-            categoryColor: _baseColors[7],
-            units: _retrieveUnitList(_categoryNames[7]),
-
-            )
-
-           
-
-        ]
-      )
+      child: _buildCategoryWidget(categories)
     );
 
     final appBar = AppBar(
@@ -135,7 +103,6 @@ class CategoryScreen extends StatelessWidget {
     );
   }
 
-  //TODO Read more on list and how to work with them to modify the code for better readibility. 
 
   
 }
